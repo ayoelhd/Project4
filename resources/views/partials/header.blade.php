@@ -12,6 +12,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('department.index') }}">Departments</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('course.index') }}">Courses</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('professor.index') }}">Professors</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('enrollment.index') }}">Enrollment</a></li>
             </ul>
         </div>
     </div>

@@ -1,4 +1,5 @@
-<footer class="bg-dark text-white text-center p-3 mt-5">
-    <p class="mb-0">© 2025 University Portal</p>
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <div class="container">
+        <p class="mb-0">© 2025 University Portal </p>
+    </div>
 </footer>
-
