@@ -3,7 +3,7 @@
 @section('content')
 <h2>Professors List</h2>
 
-<x-button href="{{ route('professors.create') }}">
+<x-button href="{{ route('professor.create') }}">
     Add Professor
 </x-button>
 
@@ -17,9 +17,9 @@
     @foreach ($professors as $professor)
         <tr>
             <td>{{ $professor->name }}</td>
-            <td>{{ $professor->department }}</td>
+            <td>{{ $professor->department->name }}</td>
             <td>
-                <x-button href="{{ route('professors.edit', $professor->id) }}">
+                <x-button href="{{ route('professor.edit', $professor->id) }}">
                     Edit / Delete
                 </x-button>
             </td>

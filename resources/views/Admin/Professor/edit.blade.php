@@ -3,10 +3,11 @@
 @section('content')
 <h2>Edit Professor</h2>
 
-<form action="{{ route('professors.update', $professor->id) }}" method="POST">
+<form action="{{ route('professor.update', $professor->id) }}" method="POST">
     @csrf
     @method('PUT')
 
+    <!-- Name -->
     <x-form-input
         name="name"
         label="Professor Name"
@@ -14,12 +15,34 @@
         required
     />
 
+    <!-- Email -->
     <x-form-input
-        name="department"
-        label="Department"
-        value="{{ $professor->department }}"
+        name="email"
+        label="Email"
+        type="email"
+        value="{{ $professor->email }}"
         required
     />
+
+    <!-- Password (optional) -->
+    <x-form-input
+        name="password"
+        label="New Password (leave empty to keep current)"
+        type="password"
+    />
+
+    <!-- Department -->
+    <label>Department</label>
+    <select name="depId" required>
+        @foreach ($departments as $department)
+            <option value="{{ $department->id }}"
+                {{ $professor->depId == $department->id ? 'selected' : '' }}>
+                {{ $department->name }}
+            </option>
+        @endforeach
+    </select>
+
+    <br><br>
 
     <x-button type="submit">
         Update
@@ -28,7 +51,7 @@
 
 <hr>
 
-<form action="{{ route('professors.destroy', $professor->id) }}" method="POST">
+<form action="{{ route('professor.destroy', $professor->id) }}" method="POST">
     @csrf
     @method('DELETE')
 
