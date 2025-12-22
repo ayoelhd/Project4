@@ -1,5 +1,8 @@
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-    <div class="container">
-        <p class="mb-0">© 2025 University Portal </p>
+<footer class="py-4 bg-light mt-auto border-top">
+    <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small text-muted">
+            <div>Copyright &copy; UniPortal 2025</div>
+            <div>Academic System</div>
+        </div>
     </div>
 </footer>
