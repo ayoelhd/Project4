@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('content')
 <h2>Professors List</h2>
 
-<x-button href="{{ route('professor.create') }}">
+<x-button href="{{ route('rofessor.create') }}">
     Add Professor
 </x-button>
 

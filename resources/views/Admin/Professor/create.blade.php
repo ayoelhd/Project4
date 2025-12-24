@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.Admin')
 
 @section('content')
 <h2>Add Professor</h2>
