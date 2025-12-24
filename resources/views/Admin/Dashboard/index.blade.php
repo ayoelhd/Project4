@@ -3,63 +3,67 @@
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4 text-dark fw-bold">University Admin Dashboard</h1>
-    <p class="text-muted small">Project Overview (Team Collaboration Mode)</p>
+    <p class="text-muted small">Academic Management System | Central Control</p>
 
     <div class="row">
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-primary text-white shadow py-2">
+            <div class="card bg-primary text-white shadow py-2 h-100">
                 <div class="card-body">
                     <div class="small text-white-50 text-uppercase fw-bold">Total Students</div>
                     <div class="h3 fw-bold">{{ \App\Models\Student::count() }}</div>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between small">
+                <div class="card-footer d-flex align-items-center justify-content-between small border-0 bg-transparent">
                     <a class="text-white stretched-link text-decoration-none" href="{{ route('student.index') }}">View List</a>
-                    <i class="fas fa-angle-right"></i>
+                    <i class="fas fa-user-graduate"></i>
                 </div>
             </div>
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-success text-white shadow py-2">
+            <div class="card bg-success text-white shadow py-2 h-100">
                 <div class="card-body">
                     <div class="small text-white-50 text-uppercase fw-bold">Professors</div>
-                    <div class="h3 fw-bold">0</div>
+                    <div class="h3 fw-bold">{{ class_exists('App\Models\Professor') ? \App\Models\Professor::count() : 0 }}</div>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between small">
-                    <span class="text-white-50">View Details</span>
-                    <i class="fas fa-angle-right"></i>
+                <div class="card-footer d-flex align-items-center justify-content-between small border-0 bg-transparent">
+                    <a class="text-white stretched-link text-decoration-none" href="{{ route('professor.index') }}">View Staff</a>
+                    <i class="fas fa-chalkboard-teacher"></i>
                 </div>
             </div>
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-warning text-white shadow py-2">
+            <div class="card bg-warning text-white shadow py-2 h-100">
                 <div class="card-body">
                     <div class="small text-dark-50 text-uppercase fw-bold text-dark">Total Courses</div>
-                    <div class="h3 fw-bold text-dark">0</div>
+                    <div class="h3 fw-bold text-dark">{{ class_exists('App\Models\Course') ? \App\Models\Course::count() : 0 }}</div>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between small">
-                    <span class="text-dark-50 text-dark">View Courses</span>
-                    <i class="fas fa-angle-right text-dark"></i>
+                <div class="card-footer d-flex align-items-center justify-content-between small border-0 bg-transparent">
+                    <a class="text-dark stretched-link text-decoration-none" href="{{ route('course.index') }}">View Courses</a>
+                    <i class="fas fa-book text-dark"></i>
                 </div>
             </div>
         </div>
 
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card bg-danger text-white shadow py-2">
+            <div class="card bg-danger text-white shadow py-2 h-100">
                 <div class="card-body">
                     <div class="small text-white-50 text-uppercase fw-bold">Enrollments</div>
-                    <div class="h3 fw-bold">0</div>
+                    <div class="h3 fw-bold">{{ class_exists('App\Models\Enrollment') ? \App\Models\Enrollment::count() : 0 }}</div>
                 </div>
-                <div class="card-footer d-flex align-items-center justify-content-between small">
-                    <span class="text-white-50">View Details</span>
-                    <i class="fas fa-angle-right"></i>
+                <div class="card-footer d-flex align-items-center justify-content-between small border-0 bg-transparent">
+                    <a class="text-white stretched-link text-decoration-none" href="{{ route('enrollment.index') }}">View Details</a>
+                    <i class="fas fa-clipboard-list"></i>
                 </div>
             </div>
         </div>
-    </div> <div class="card shadow border-0 mb-4">
+    </div> 
+
+    <div class="card shadow border-0 mb-4">
         <div class="card-header bg-white py-3">
-            <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-history me-2"></i>Recently Joined Students</h6>
+            <h6 class="m-0 font-weight-bold text-primary">
+                <i class="fas fa-history me-2"></i>Recently Joined Students
+            </h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -79,7 +83,6 @@
                                 <td class="fw-bold">{{ $recentStudent->name }}</td>
                                 <td>{{ $recentStudent->email }}</td>
                                 <td class="text-center">
-                                  
                                     @if($recentStudent->status == 'active')
                                         <span class="badge bg-success rounded-pill px-3">Active</span>
                                     @elseif($recentStudent->status == 'notActive')
@@ -90,7 +93,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="4" class="text-center py-4">No records found.</td></tr>
+                            <tr><td colspan="4" class="text-center py-4 text-muted">No students found.</td></tr>
                         @endforelse
                     </tbody>
                 </table>

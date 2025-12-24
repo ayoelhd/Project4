@@ -20,8 +20,13 @@
                 Students
             </a>
 
-            <a class="nav-link px-3" href="#">
-                <div class="sb-nav-link-icon"><i class="fas fa-book text-warning"></i></div>
+            <a class="nav-link px-3 {{ request()->routeIs('professor.*') ? 'active' : '' }}" href="{{ route('professor.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher text-warning"></i></div>
+                Professors
+            </a>
+
+            <a class="nav-link px-3 {{ request()->routeIs('course.*') ? 'active' : '' }}" href="{{ route('course.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open text-light"></i></div>
                 Courses
             </a>
 
