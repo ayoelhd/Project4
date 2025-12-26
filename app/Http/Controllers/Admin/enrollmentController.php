@@ -89,8 +89,13 @@ class enrollmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy($id)
+{
+    $enrollment = Enrollment::findOrFail($id);
+    $enrollment->delete();
+
+    return redirect()->route('enrollment.index')
+                     ->with('success', 'Enrollment deleted successfully');
+}
+
 }

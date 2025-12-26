@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class studentController extends Controller
 {
@@ -71,15 +72,20 @@ class studentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
-    {
-        $input = $request->validate([
-        'stNo'     => ['required', 'unique:students,stNo,'],
-        'name'     => ['required'],
-        'email'    => [
+    
+
+public function update(Request $request, Student $student)
+{
+    $input = $request->validate([
+        'stNo' => [
+            'required',
+            Rule::unique('students', 'stNo')->ignore($student->id),
+        ],
+        'name' => ['required'],
+        'email' => [
             'required',
             'email',
-            'unique:students,email,',
+            Rule::unique('students', 'email')->ignore($student->id),
             'regex:/^[A-Za-z0-9._%+-]+@limu\.edu\.ly$/'
         ],
         'password' => ['nullable'],
@@ -87,6 +93,7 @@ class studentController extends Controller
         'status'   => ['required', 'in:active,notActive,dismissed'],
     ]);
 
+    // Hash password only if provided
     if (!empty($input['password'])) {
         $input['password'] = Hash::make($input['password']);
     } else {
@@ -95,8 +102,10 @@ class studentController extends Controller
 
     $student->update($input);
 
-    return redirect()->route('student.index')->with('success', 'Student is updated successfully');
-    }
+    return redirect()->route('student.index')
+                     ->with('success', 'Student is updated successfully');
+}
+
 
     /**
      * Remove the specified resource from storage.

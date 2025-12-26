@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -25,7 +25,7 @@
             <select name="courseId" class="form-control" required>
                 @foreach ($courses as $course)
                     <option value="{{ $course->id }}" @selected($course->id == $enrollment->courseId)>
-                        {{ $course->title }}
+                        {{ $course->name }}
                     </option>
                 @endforeach
             </select>
