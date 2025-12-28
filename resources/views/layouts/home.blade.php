@@ -21,7 +21,8 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('home.index') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('home.about') }}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('home.contact') }}">Contact</a></li>
-                    <li class="nav-item"><a class="btn btn-primary ms-lg-3" href="{{ route('dashboard') }}">Admin Dashboard</a></li>
+                    
+                    <li class="nav-item"><a class="btn btn-primary ms-lg-3" href="{{ route('login.show') }}">Login</a></li>
                 </ul>
             </div>
         </div>

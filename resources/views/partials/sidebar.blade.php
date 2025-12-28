@@ -36,12 +36,15 @@
             </a>
 
             <div class="sb-sidenav-menu-heading border-top border-secondary mt-2">SYSTEM</div>
-            <a class="nav-link px-3 text-info" href="{{ url('/') }}">
-                <div class="sb-nav-link-icon"><i class="fas fa-arrow-left"></i></div>
-                Back to Site
+            
+            <a class="nav-link px-3 text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                Logout
             </a>
 
-        </div>
+            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
     </div>
     
     <div class="sb-sidenav-footer">
